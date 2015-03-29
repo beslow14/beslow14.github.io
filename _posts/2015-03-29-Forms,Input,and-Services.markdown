@@ -41,13 +41,13 @@ Form을 사용하게 되면, AngularJS는 FormContorller를 생성(Form State �
   - Form State : $invalid, $valid, $pristine(최초상태), $dirty(초기의 반대), $error
 
 아래는 username을 4자리 밑으로 입력시, submit 버튼을 안보이도록 설정 하는 예제임.
-```
+{% highlight javascript %}
 <form ng-submit=”ctrl.submit()” name=”myForm”>
   <input type=”text” ng-model=”ctrl.user.username” required ng-minlength=”4”>
   <input type=”password” ng-model=”ctrl.user.password” required >
   <input type=”submit” value=”Submit” ng-disabled=”myForm.$invalid”>
 </form>
-```
+{% endhighlight %}
 
 
 # Error Handling with Forms
@@ -59,7 +59,7 @@ AngularJS가 제공하는 기본 Validators
 어떻게 에러 내용을 유저에게 잘 전달해 줄수 있을까?
 -input state값을 체크해, 에러메시지를 전달(html tag만으로..)
 
-```
+{% highlight javascript %}
 <form ng-submit=”ctrl.submit()” name=”myForm”>
  <input type=”text” name=”uname” ng-model=”ctrl.user.username” required ng-minlength=”4”>
   <span ng-show=”myForm.uname.$error.required”>
@@ -68,7 +68,7 @@ AngularJS가 제공하는 기본 Validators
    Minimum length required is 4 </span>
   <span ng-show=”myForm.uname.$invalid”>
     This field is invalid </span>
-```
+{% endhighlight %}
 
 ### Styling and States
 input state 와 css 값을 연결하여, 잘못된 입력이 들어왔을때, 하이라이트가 가능하다.
@@ -77,12 +77,12 @@ input state 와 css 값을 연결하여, 잘못된 입력이 들어왔을때, �
 
 HTML form은 subform을 지원하지 않지만, Angular JS는 ng-form directive를 통해서 지원이 가능함.
 profile.$invalid 나 myForm.proflie.$invalid 로 접근가능함.
-```
+{% highlight javascript %}
 <form name=”myForm”>
   <ng-form name=”profile”>
   </ng-form>
 </form>
-```
+{% endhighlight %}
 
 # Other Form Controls
 
@@ -105,11 +105,11 @@ this.sports = [{label:”Basketball”, selected:”YES}, {...}, {...}]
 
 ### Radio Buttons
 라디오 버튼은 체크 박스와 거의 동일하나,, 특성상 하나를 선택하면 다른 것들은 해제되어야 함
-```
+{% highlight javascript %}
 <div ng-init=”user = {gender:’female’}”>
 	<input type=”radio” name=”gender” ng-model=”user.gender” value=”male”>
 	<input type=”radio” name=”gender” ng-model=”user.gender” value=”female”>
 </div>
-```
+{% endhighlight %}
 
 ### Combo Boxes / Drop Downs
