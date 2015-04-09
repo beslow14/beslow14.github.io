@@ -32,7 +32,7 @@ Unit Testing : function이나 코드가 의도한대로 동작하도록 테스�
 ####카르마 설치
 https://karma-runner.github.io/0.12/intro/installation.html
 
-```bash
+{% highlight %}
 # Install Karma:
 npm install karma --save-dev
 
@@ -42,7 +42,7 @@ npm install karma-jasmine karma-chrome-launcher --save-dev
 # Run Karma:
 # ./node_modules/karma/bin/karma start 하는 것 대신 아래 commandline 툴을 설치 함.
 npm install -g karma-cli
-```
+{% endhighlight %}
 
 #### 카르마 설정하기
 https://karma-runner.github.io/0.12/config/configuration-file.html
