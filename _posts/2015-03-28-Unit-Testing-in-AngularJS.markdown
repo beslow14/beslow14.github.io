@@ -29,6 +29,24 @@ Unit Testing : function이나 코드가 의도한대로 동작하도록 테스�
 
 `테스트 프레임워크` : Test case를 작성할때의 Syntax나 APIs, Assertion 이다. 꼭 Jasmine이 아니라도 되며, mocha나 다른 거라도 상관없다.
 
+####카르마 설치
+https://karma-runner.github.io/0.12/intro/installation.html
+
+'''bash
+# Install Karma:
+npm install karma --save-dev
+
+# Install plugins that your project needs:
+npm install karma-jasmine karma-chrome-launcher --save-dev
+
+# Run Karma:
+# ./node_modules/karma/bin/karma start 하는 것 대신 아래 commandline 툴을 설치 함.
+npm install -g karma-cli
+'''
+
+#### 카르마 설정하기
+https://karma-runner.github.io/0.12/config/configuration-file.html
+
 
 ##Karma Plugins
 
