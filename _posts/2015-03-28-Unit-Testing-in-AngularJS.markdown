@@ -52,10 +52,10 @@ https://karma-runner.github.io/0.12/config/configuration-file.html
 앞에서 2가지 플러그인을 npm명령을 통해서 인스톨했다.(chrome 런처와 jasmine 테스트 프레임워크)
 카르마 플러그인은 대략 아래 4가지로 구분되어질 수 있다.
 <ul>
-<li>브라우저 런처
-<li>테스트 프레임워크
-<li>Repoters
-<li>Integrators
+<li>브라우저 런처</li>
+<li>테스트 프레임워크</li>
+<li>Repoters</li>
+<li>Integrators</li>
 </ul>
 
 ##Karma Config 설명
