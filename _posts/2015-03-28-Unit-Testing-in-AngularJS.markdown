@@ -44,26 +44,39 @@ npm install karma-jasmine karma-chrome-launcher --save-dev
 npm install -g karma-cli
 {% endhighlight %}
 
-#### 카르마 설정하기
-https://karma-runner.github.io/0.12/config/configuration-file.html
-
 
 #### 카르마 플러그인
 앞에서 2가지 플러그인을 npm명령을 통해서 인스톨했다.(chrome 런처와 jasmine 테스트 프레임워크)
 카르마 플러그인은 대략 아래 4가지로 구분되어질 수 있다.
 
-- 브라우저 런처
-- 테스트 프레임워크
-- Repoters
-- Integrators
+- 브라우저 런처 (ex: 크롬런처)
+- 테스트 프레임워크 (ex: 자스민, 모카)
+- Repoters (디폴트가 일단 내장되어 있긴하다)
+- Integrators (구글 Closure 나 RequireJS같은 자바 스크립트 라이브러리나 툴과의 결합)
 
 
-##Karma Config 설명
 
-##Karma Config 생성
+####Karma Config 설명
+아래 페이지에 상세한 것은 설명되어져 있다.
+https://karma-runner.github.io/0.12/config/configuration-file.html
 
-#Jasmine: Spec Style of Testing
+아래 처럼 'karma.conf.js'파일로 설정들을 저장한다.
+{% highlight javascript %}
+// karma.conf.js
+module.exports = function(config) {
+  config.set({
+    basePath: '../..',
+    frameworks: ['jasmine'],
+    //...
+  });
+};
+{% endhighlight %}
+####Karma Config 생성
+기존에 만들어진 karma.conf.js를 재사용해도 되고, 'karma init'명령어를 이용하면 대화식으로 생성할 수도 있다.
 
+
+#Jasmine : Spec Style of Testing
+> dsasfasd
 ##Jasmine Syntax
 
 ##Useful Jasmine Matchers
