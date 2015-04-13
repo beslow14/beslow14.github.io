@@ -58,6 +58,7 @@ npm install -g karma-cli
 
 ####Karma Config 설명
 아래 페이지에 상세한 것은 설명되어져 있다.
+
 https://karma-runner.github.io/0.12/config/configuration-file.html
 
 아래 처럼 'karma.conf.js'파일로 설정들을 저장한다.
@@ -77,6 +78,8 @@ module.exports = function(config) {
 
 #Jasmine : Spec Style of Testing
 > dsasfasd
+
+
 ##Jasmine Syntax
 
 ##Useful Jasmine Matchers
