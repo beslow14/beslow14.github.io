@@ -150,3 +150,78 @@ $http : AJAX 통신을 하는 서비스이다.
   
   
 {% endhighlight %}
+
+#### Provider
+
+> https://docs.angularjs.org/api/auto/service/$provide 에 설명이 잘 되어 있다.
+> Angular service 는 Service Factory에 의해서 생성되어지는 싱글톤 객체이고,
+> 이 Service Factory는 Service Provider에 의해서 생성되어 진다.
+> Service Provider는 생성자 함수로써, '$get' 프로퍼티를 참조해서,  Service Factory 함수를 호출하고, 
+> service 객체가 생성되어 진다.
+
+- provider 함수를 $injector에 등록하는데, 이름은 뒤에 자동으로 'Provider'가 따라 붙게 된다. 예를 들면, $log 서비스는 $logProvider라 불리는 provider를 가지고 있다.
+- 중요한 점은, 어떤 서비스가 생성되어 질 것인가를 선택할 수 있다는 점인데, 예를 들면, '$logProvider'의 경우 옵션에 따라서 로그를 출력할 것인지 말것인지를 결정할 수 있다.
+- 이 책의 예에서는, config 함수를 이용해서, '디폴트 아이템을 가질지 안가질지'를 선택할 수 있게 했다.
+
+{% highlight javascript %}
+  
+  function ItemService(opt_items){
+    var items = opt_items || [];
+    this.list = function() {
+      return items;
+    };
+    this.add = function(item){
+      items.push(item);
+    };
+  }
+  
+  angular.module('noteApp',[])
+  .provider('ItemService', function(){
+    var haveDefaultItems =true;
+    this.disableDefaultItems = function() {
+      haveDefaultItems =false;
+    };
+    this.$get = [function(){
+      var optItems = [];
+      if(haveDefaultItems){
+        optItems = [
+          {id:1, label:'Item 0'},
+          {id:2, label:'Item 1'}
+        ];
+      }
+      return new ItemService(optItems);
+    }];
+  })
+  .config(['ItemServiceProvider',function(ItemSericeProvider){
+    var shouldHaveDefaults = false;
+    if(!shouldHaveDefaults){
+      ItemServiceProvider.disableDefaultItems();
+    }
+  }])
+  .controller('MainCtrl',[function(){
+    var self = this;
+    self.tab = 'first';
+    self.open = function(tab) {
+      self.tab = tab;
+    };
+  }])
+  .controller('SubCtrl',['ItemService',
+    function(ItemService) {
+      var self = this;
+      self.list = function() {
+        return ItemService.list();
+      };
+      self.add = function() {
+        ItemService.add({
+          id: self.list().length + 1,
+          label: 'Item ' + self.list().length
+          });
+      };
+    };
+  }])
+  
+  
+  
+{% endhighlight %}
+
+
