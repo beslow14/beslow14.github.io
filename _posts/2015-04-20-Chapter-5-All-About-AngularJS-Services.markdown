@@ -153,10 +153,14 @@ $http : AJAX 통신을 하는 서비스이다.
 
 #### Provider
 
-> https://docs.angularjs.org/api/auto/service/$provide 에 설명이 잘 되어 있다.
+> [https://docs.angularjs.org/api/auto/service/$provide] 에 설명이 잘 되어 있다.
+
 > Angular service 는 Service Factory에 의해서 생성되어지는 싱글톤 객체이고,
+
 > 이 Service Factory는 Service Provider에 의해서 생성되어 진다.
+
 > Service Provider는 생성자 함수로써, '$get' 프로퍼티를 참조해서,  Service Factory 함수를 호출하고, 
+
 > service 객체가 생성되어 진다.
 
 - provider 함수를 $injector에 등록하는데, 이름은 뒤에 자동으로 'Provider'가 따라 붙게 된다. 예를 들면, $log 서비스는 $logProvider라 불리는 provider를 가지고 있다.
