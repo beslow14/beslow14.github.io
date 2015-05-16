@@ -7,6 +7,7 @@ categories: angularjs study
 >이번장에서는 $http 서비스를 사용해서 서버와 어떻게 통신하는지를 살펴본다.
 
 ## $http 로 GET을 사용하여 데이타 가져오기
+
 >아래는 javascript API를 이용하는 고전적인 방법
 {% highlight javascript %}
 var xmlhttp = new XMLHttpRequest();
@@ -28,6 +29,7 @@ $http는 core AngularJS 서비스로 서버와 endpoint간에 XHR을 사용한 �
 
 #### RESTFUL API
 우리의 가상 서버는 아래와 같은 API를 제공해 준다.
+
 - GET /api/note/ => array of note 를 제공
 - GET /api/note/:id => 특정 id의 note를 제공
 - POST /api/note => 신규 article을 생성
@@ -49,11 +51,12 @@ $http는 core AngularJS 서비스로 서버와 endpoint간에 XHR을 사용한 �
 {% endhighlight %}
 
 > $http.get()함수는 promise object를 리턴한다.
+
 - then() 함수는 success handler와 error handler 의 두 개를 전달인자로 가진다.
 - 서버가 200 ok 응답을 보내주면 success를, 그 외의 응답이 오면 error 핸들러를 부른다.
 
 #### A Deep Dive into Promises
->> Promise의 개념에 대해서 간단하게 살펴본다. AngularJS의 Promise는 Kris Kowal's Q proposal에 기반을 두고 있다. 
+> Promise의 개념에 대해서 간단하게 살펴본다. AngularJS의 Promise는 Kris Kowal's Q proposal에 기반을 두고 있다. 
 
 > 요건 전통적인 콜백 반복 호출 방식
 {% highlight javascript %}
