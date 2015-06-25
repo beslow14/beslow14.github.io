@@ -93,9 +93,67 @@ xhrCall()
 - 요건, 우리가 컨트롤 할수 있다.
 - success핸들러나 error핸들러에서 값을 리턴한다면, 다음의 Success function이 호출되고,
 - Error핸들러를 호출하고 싶다면,,, $q 서비스를 알아야 한다.
+
 #### The $q Service
 > 아래의 4개 API를 제공해준다.
 - $q.defer() : 잘 이해는 안가는데,, 보통 3rd party 라이브러리와 통합해서 사용할 때, 우리 어플리케이션 자체의 promise를 만들 필요가 있을 때 사용된다고 한다.  
 - deferredObject.resolve : promise 체인의 success 핸들러에 데이타를 전달할때 사용된다.
 - deferredObject.reject : promise 체인의 error 핸들러에 데이타를 전달할때 사용된다.
 - $q.reject : 다음 promise의 error handler를 호출 함
+
+#### Making POST Requests with $http
+
+> 이제 이런 백그라운드를 바탕으로 서버 통신 예제의 나머지 부분을 만들어 보자 
+
+> 처음 로드 될때, fetchTodos()가 실행 된다. 그리고, form에서 submit클릭시 add()함수에서 POST방식으로 값을 전송하고, 성공 시에 , fetchTodos()함수를 호출해서, GET방식으로 데이타 배열을 가져오게 된다.
+
+{% highlight javascript %}
+<html ng-app="notesApp">
+
+<head>
+  <title></title>
+</head>
+
+<body ng-controller="MainCtrl as mainCtrl">
+  <h1>Hello Servers!</h1>
+  <div ng-repeat="todo in mainCtrl.items" class="item">
+  <div><span ng-bind="todo.label"></span></div>
+  <div> - by <span ng-bind="todo.author"></span></div>
+  </div>
+
+  <div>
+    <form name="addForm" ng-submit="mainCtrl.add()">
+      <input type="text" placeholder="Label" ng-model="mainCtrl.newTodo.label" required>
+      <input type="text" placeholder="Author" ng-model="mainCtrl.newTodo.author" required>
+      <input type="submit" value="Add" ng-disabled="addForm.$invalid">
+    </form>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+  </script>
+  <script>
+    angular.module('notesApp',[])
+      .controller('MainCtrl',['$http',function($http){
+        var self = this;
+        self.items = [];
+        self.newTodo = {};
+        var fetchTodos = function() {
+          return $http.get('/api/note').then(
+            function(response){
+              self.items = reponse.data;
+            }, function(errResponse){
+              console.error('Error while fetching notes');
+            });
+      };
+      fetchTodos();
+      
+      self.add = function(){
+        $http.post('/api/note', self.newTodo)
+          .then(fetchTodos)
+          .then(function(response){
+            self.newTodo = {};
+          });
+      };
+      }])
+</html>
+{% endhighlight %}
