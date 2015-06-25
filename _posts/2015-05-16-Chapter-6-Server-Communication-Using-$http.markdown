@@ -157,3 +157,12 @@ xhrCall()
       }])
 </html>
 {% endhighlight %}
+
+#### $http API
+> 우리는 $http를 사용해서 data를 얻어오고 저장했다. 그래서, AngularJS의 $http서비스가 제공하는 실제 API를 한번 살펴보자
+
+$http는 아래의 메쏘드를 제공한다.
+ GET, HEAD, POST, DELETE, PUT, JSONP
+
+post data가 없는 요청은 보통 2개의 파라미터를 가지고 EX) $http.get(url, config) 또는 $http(config) -> url은 config의 부분으로 post data가 있는 요청은 3개의 파라미터를 가진다.(post data가 2번째가 된다.)
+참, config 파라미터는 optional이다.
