@@ -12,6 +12,7 @@ github_username:  beslow14
 
 # Build settings
 markdown: redcarpet
+highlighter: pygments 
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
 
 redcarpet:
